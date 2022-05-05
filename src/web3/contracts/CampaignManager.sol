@@ -5,7 +5,7 @@ import "./Campaign.sol";
 
 contract CampaignManager {
     address[] public campaigns;
-    address owner;
+    address public owner;
 
     constructor() {
         owner = msg.sender;

@@ -42,15 +42,15 @@ for (let contractFileName in output) {
     const contract = output[contractFileName][contractName];
 
     const abi = contract["abi"];
-    const source = contract["evm"]["bytecode"]["object"];
+    const bytecode = contract["evm"]["bytecode"]["object"];
 
-    const outputPath = path.resolve(buildPath, contractName + ".json");
+    const outputPath = path.resolve(buildPath, contractName + ".build.json");
 
     fs.outputJsonSync(
         outputPath,
         {
             abi,
-            source,
+            bytecode
         }
     );
 }

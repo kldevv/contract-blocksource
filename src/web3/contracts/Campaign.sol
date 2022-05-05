@@ -131,8 +131,10 @@ contract Campaign {
             msg.value >= minimumPay,
             "Minimum required contribution not meet."
         );
-        isPatron[msg.sender] = true;
-        patronCount += 1;
+        if (!isPatron[msg.sender]) {
+            isPatron[msg.sender] = true;
+            patronCount += 1;
+        }
     }
 
     function approveRequest(uint256 requestID)
@@ -149,5 +151,16 @@ contract Campaign {
             request.approvalCount += 1;
         }
         request.isApproved[msg.sender] = true;
+    }
+
+    function isUserApproved(uint256 requestID, address user)
+        external
+        view
+        onlyValidRequestID(requestID)
+        onlyUnresolvedRequest(requestID)
+        onlyUnrevokedRequest(requestID)
+        returns (bool)
+    {
+        return requests[requestID].isApproved[user];
     }
 }
