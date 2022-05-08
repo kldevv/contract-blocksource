@@ -1,0 +1,15 @@
+.logo {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    /* font-stretch: condensed; */
+}
+.menu-font {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    color: rgb(95, 95, 95);
+}
+.theme1 {
+    color: rgb(117, 117, 244);
+}
