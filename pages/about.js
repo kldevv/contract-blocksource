@@ -1,11 +1,25 @@
 import React, { Component } from "react";
 import { Container, Header, Segment, Icon } from "semantic-ui-react";
-import Layout from "../components/Layout";
+import Layout from "../components/components/Layout";
+import { getWalletStatus } from "../web3/web3";
 
 class AboutPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            walletStatus: "disabled"
+        }
+    }
+    async componentDidMount() {
+        const walletStatus = await getWalletStatus();
+        this.setState({
+            walletStatus
+        })
+    }
     render() {
+        const { walletStatus } = this.state;
         return (
-            <Layout>
+            <Layout activeItem="About" walletStatus={ walletStatus }>
             <Container textAlign="left" style={{ padding: "5em 0em "}}>
                 <Header
                     style={{
@@ -13,7 +27,7 @@ class AboutPage extends Component {
                         fontFamily: "Poppins, sans-serif",
                         fontWeight: "bolder",
                         fontSize: '3.5em',
-                        marginTop: "1.5em",
+                        marginTop: "1em",
                     }}
                 >
                     <Header.Content>
