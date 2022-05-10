@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Layout from "../../components/components/Layout";
-import MenuMessageScene from "../../components/scenes/message";
-import GetConnectScene from "../../components/scenes/get-connect";
-import { getWalletStatus } from "../../web3/web3";
+import Layout from "../components/components/Layout";
+import ExploreMessageBarScene from "../components/scenes/explore-message-bar";
+import ExploreCampaignListScene from "../components/scenes/explore-campaign-list";
+import GetConnectScene from "../components/scenes/get-connect";
+import { getWalletStatus } from "../web3/web3";
 
 class ExploreCampaignsPage extends Component {
     constructor(props) {
@@ -21,8 +22,9 @@ class ExploreCampaignsPage extends Component {
         const {walletStatus} = this.state;
         return (
         <Layout activeItem="Explore" walletStatus={walletStatus}>
-            <MenuMessageScene />
-            <GetConnectScene walletStatus={walletStatus}/>
+            <ExploreMessageBarScene content={"Explore Campaigns"} backgroundColor="white" />
+            {/* <GetConnectScene walletStatus={walletStatus}/> */}
+            <ExploreCampaignListScene />
         </Layout>
         );
     }

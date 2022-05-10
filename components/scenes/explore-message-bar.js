@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-import { Container, Header, Segment, Icon, Grid} from "semantic-ui-react";
+import { Container, Header, Segment, Grid} from "semantic-ui-react";
 
-class MenuMessageScene extends Component {
+class ExploreMessageBarScene extends Component {
     render() {
+        const { content, backgroundColor } = this.props;
         return (
             <Segment 
             vertical
             style={{ 
-                minHeight: 50,
-                padding: "1em 0em 1em 0em"
+                minHeight: 200,
+                padding: "1em 0em 1em 0em",
+                backgroundColor: backgroundColor,
             }}>
                 <Container text textAlign="center">
                     <Header
                     as='h1'
-                    content="Explore Campaigns"
+                    content={content}
                     style={{
                         color: "rgb(4, 17, 29)",
                         fontFamily: "Poppins, sans-serif",
@@ -21,14 +23,10 @@ class MenuMessageScene extends Component {
                         fontSize: '3em',
                         marginTop: "2em",
                     }} />
-                    <Grid column={3} style={{ marginTop: "2em" }}>
-                        <Grid.Column>
-                        </Grid.Column>
-                    </Grid>
                 </Container>
             </Segment>
         );
     }
 }
 
-export default MenuMessageScene;
+export default ExploreMessageBarScene;

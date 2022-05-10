@@ -28,7 +28,7 @@ class LandingAboutScene extends Component {
                 }}>
                     <Header.Content style={{ color: "rgb(117, 117, 244)"}}>
                         Understand
-                        <Icon name="arrow alternate circle right outline"/>
+                        <Icon loading name="arrow alternate circle right outline"/>
                     </Header.Content>
                     <Header.Content>
                         TheCampaigns

@@ -19,7 +19,7 @@ class HeaderMenu extends Component {
                 backgroundColor: "white",
                 marginBottom: "1rem",
                 boxShadow: "1px 1px 15px rgb(150, 150, 150, 0.3) !important",
-                zIndex: "1"
+                zIndex: "200000"
             }}>
                 <Link href="/">
                     <Menu.Item>
@@ -27,9 +27,9 @@ class HeaderMenu extends Component {
                     </Menu.Item>
                 </Link>
                 <Menu.Menu position="right">
-                    <MenuButton content="Explore" href="/explore-campaigns" activeItem={activeItem}/>
-                    <MenuButton content="Create" href="/create-campaign" activeItem={activeItem}/>
-                    <MenuButton content="About" href="/about" activeItem={activeItem}/>
+                    <MenuButton content="Explore" href="/explore-campaigns" isActive={activeItem === "Explore"}/>
+                    <MenuButton content="Create" href="/create-campaign" isActive={activeItem === "Create"}/>
+                    <MenuButton content="About" href="/about" isActive={activeItem === "About"}/>
                     <Menu.Item>
                         <WalletButtonSecondary walletStatus={walletStatus}/>
                     </Menu.Item>

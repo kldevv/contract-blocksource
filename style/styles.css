@@ -11,4 +11,9 @@
 }
 .theme1 {
     color: rgb(117, 117, 244);
+    color: rgba(143, 143, 143, 0.537)
+}
+
+a:hover {
+    color: rgb(117, 117, 244);
 }

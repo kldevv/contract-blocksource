@@ -4,11 +4,11 @@ import Link from "next/link";
 
 class MenuButton extends Component {
     render() {
-        const { activeItem, content, href } = this.props;
+        const { isActive, content, href } = this.props;
         return (
           <Link href={href}>
                 <Menu.Item 
-                active={activeItem === content} 
+                active={isActive} 
                 style={{
                     border: "1px solid rgb(4, 17, 29)",
                     borderColor: "rgb(117, 117, 244)",
@@ -17,8 +17,8 @@ class MenuButton extends Component {
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: "bold",
                     backgroundColor: "white",
-                    ...(activeItem === content ? {borderStyle: "none none solid none"} : {borderStyle: "none none none none"}), 
-                    ...(activeItem === content ? {color: "rgb(4, 17, 29)"} : {color: "rgb(95, 95, 95)"}), 
+                    ...(isActive ? {borderStyle: "none none solid none"} : {borderStyle: "none none none none"}), 
+                    ...(isActive ? {color: "rgb(4, 17, 29)"} : {color: "rgb(95, 95, 95)"}), 
                 }}>
                     {content}
                 </Menu.Item>
