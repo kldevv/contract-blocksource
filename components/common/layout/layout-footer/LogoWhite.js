@@ -1,35 +1,36 @@
 import React, {Component} from "react";
 import { Icon, Header} from "semantic-ui-react";
-import BetaTag from "./BetaTag";
-import config from "../../config";
+import config from "../../../../config";
+
+import BetaTag from "../../../beta/BetaTag";
 
 const { isBeta } = config;
 
-class Logo extends Component {
+class LogoWhite extends Component {
     render() {
         return (
             <Header
             style={{
                 paddingLeft : "5px",
-                color: "rgb(4, 17, 29)",
+                color: "white",
                 fontSize: "20px",
                 fontFamily: "Poppins, sans-serif",
                 fontWeight: "bolder",
             }}>
                     <Header.Content>
                     <Icon 
-                    name="paper plane" 
+                    name="paper plane outline" 
                     size="large"
                     style={{
-                        color: "rgb(117, 117, 244)",
+                        color: "white",
                         paddingRight:"0.1px"
                     }}/>
                     TheCampaigns
                     <BetaTag isBeta={isBeta}/>
-                    </Header.Content>
+                </Header.Content>
             </Header>
         );
     }
 }
 
-export default Logo;
+export default LogoWhite;

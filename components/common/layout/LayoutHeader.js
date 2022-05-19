@@ -1,17 +1,34 @@
 import React, { Component } from "react";
 import { Menu, Icon} from "semantic-ui-react";
 import Link from "next/link";
-import MenuButton from "./MenuButton";
-import WalletButtonSecondary from "./WalletButtonSecondary";
-import Logo from "./Logo";
+import MenuButton from "./layout-header/MenuButton";
+import MenuWalletButton from "./layout-header/MenuWalletButton";
+import LogoBlack from "./layout-header/LogoBlack";
 
-class HeaderMenu extends Component {
+class LayoutHeader extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            walletStatus: "not received",
+            account: "0x0"
+        }
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        const { walletStatus, account } = props;
+        return {
+            walletStatus,
+            account
+        };
+    }
+
     render() {
-        const { activeItem, walletStatus} = this.props
+        const { activeItem } = this.props
+        const { walletStatus, account } = this.state;
         return (
             <Menu 
             borderless 
-            size="huge" 
+            size="huge"
             tabular
             fixed="top"
             style={{ 
@@ -23,7 +40,7 @@ class HeaderMenu extends Component {
             }}>
                 <Link href="/">
                     <Menu.Item>
-                        <Logo />
+                        <LogoBlack />
                     </Menu.Item>
                 </Link>
                 <Menu.Menu position="right">
@@ -31,7 +48,7 @@ class HeaderMenu extends Component {
                     <MenuButton content="Create" href="/create-campaign" isActive={activeItem === "Create"}/>
                     <MenuButton content="About" href="/about" isActive={activeItem === "About"}/>
                     <Menu.Item>
-                        <WalletButtonSecondary walletStatus={walletStatus}/>
+                        <MenuWalletButton walletStatus={walletStatus} account={account}/>
                     </Menu.Item>
                     <Link href="https://github.com/linstudyhard9527/contract-blocksource.git" passHref>
                         <Menu.Item>
@@ -44,4 +61,4 @@ class HeaderMenu extends Component {
     };
 }
 
-export default HeaderMenu;
+export default LayoutHeader;

@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import Link from "next/link";
 import { Container, Header, Segment, Icon, Grid, Divider} from "semantic-ui-react";
-import LogoInverted from "./LogoInverted";
+import LogoWhite from "./layout-footer/LogoWhite";
 
-class Footer extends Component {
+class LayoutFooter extends Component {
     render() {
         return (
             <div>
@@ -36,7 +36,7 @@ class Footer extends Component {
             }}>
                 <Container>
                 <Divider section />
-                <LogoInverted />
+                <LogoWhite />
                 </Container>
             </Segment>
             </div>
@@ -44,4 +44,4 @@ class Footer extends Component {
     };
 }
 
-export default Footer;
+export default LayoutFooter;

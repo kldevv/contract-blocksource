@@ -1,32 +1,37 @@
 import React, { Component } from "react";
-import { Container, Header, Segment} from "semantic-ui-react";
-import Layout from "../components/components/Layout";
-import CreateCampaignFormScene from "../components/scenes/create-campaign-form";
-import { getWalletStatus } from "../web3/web3";
+import { Segment } from "semantic-ui-react";
+import Layout from "../components/common/Layout";
+import CreateCampaignScene from "../components/create-campaign/CreateCampaignScene";
+import { getWalletStatus, getFirstAccount } from "../web3/lib/wallet";
 
 class CreateCampaignPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            walletStatus: "disabled"
+            walletStatus: "not received",
+            account: "0x0"
         }
     }
+
     async componentDidMount() {
         const walletStatus = await getWalletStatus();
+        const account = await getFirstAccount();
         this.setState({
-            walletStatus
+            walletStatus,
+            account
         })
     }
+    
     render() {
-        const { walletStatus } = this.state;
+        const { walletStatus, account } = this.state;
         return (
-            <Layout activeItem="Create" walletStatus={walletStatus}>
+            <Layout activeItem="Create" walletStatus={walletStatus} account={account}>
                 <Segment 
                 vertical
                 style={{
                     minHeight: 1800
                 }}>
-                    <CreateCampaignFormScene />
+                    <CreateCampaignScene walletStatus={walletStatus}/>
                 </Segment>
             </Layout>
         );

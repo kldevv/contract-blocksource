@@ -1,12 +1,26 @@
 import React, { Component } from "react";
 import { Container, Header, Segment} from "semantic-ui-react";
-import WalletButtonPrimary from "../components/WalletButtonPrimary";
-import Logo from "../components/Logo";
+import WelcomeWalletButton from "./index-welcome-scene/WelcomeWalletButton";
 
-class LandingWelcomeScene extends Component {
+class IndexWelcomeScene extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            walletStatus: "not received",
+            account: "0x0"
+        }
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        const { walletStatus, account } = props;
+        return {
+            walletStatus,
+            account
+        };
+    }
 
     render() {
-        const { walletStatus } = this.props;
+        const { walletStatus, account } = this.state;
         return (
             <Segment
             vertical
@@ -38,11 +52,11 @@ class LandingWelcomeScene extends Component {
                         marginBottom: '1.5em',
                     }}
                     />
-                    <WalletButtonPrimary walletStatus={walletStatus}/>
+                    <WelcomeWalletButton walletStatus={walletStatus} account={account}/>
                 </Container>
             </Segment>
         );
     }
 }
 
-export default LandingWelcomeScene;
+export default IndexWelcomeScene;

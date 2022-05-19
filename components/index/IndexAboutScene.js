@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import { Button, Container, Header, Segment, Icon, Grid} from "semantic-ui-react";
-import Logo from "../components/Logo";
 
-class LandingAboutScene extends Component {
+class IndexAboutScene extends Component {
     render() {
         return (
             <Segment 
@@ -98,4 +97,4 @@ class LandingAboutScene extends Component {
     }
 }
 
-export default LandingAboutScene;
+export default IndexAboutScene;

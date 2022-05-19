@@ -1,9 +1,23 @@
 import React, { Component } from "react";
 import { Container, Header } from "semantic-ui-react";
-import NewCampaignForm from "../components/NewCampaginForm";
+import NewCampaignForm from "./create-campaign-scene/NewCampaginForm";
 
-class CreateCampaignFormScene extends Component {
+class CreateCampaignScene extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            walletStatus: "not received"
+        }
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        const { walletStatus } = props;
+        return {
+            walletStatus
+        };
+    }
     render() {
+        const { walletStatus } = this.state;
         return (
             <Container text textAlign="center">
                 <Header
@@ -18,11 +32,11 @@ class CreateCampaignFormScene extends Component {
                         marginBottom: "1em",
                 }} />
                 <Container textAlign="left">
-                    <NewCampaignForm />
+                    <NewCampaignForm walletStatus={walletStatus} />
                 </Container>
             </Container>
         );
     }
 }
 
-export default CreateCampaignFormScene;
+export default CreateCampaignScene;

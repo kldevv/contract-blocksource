@@ -1,25 +1,28 @@
 import React, { Component } from "react";
 import { Container, Header, Segment, Icon } from "semantic-ui-react";
-import Layout from "../components/components/Layout";
-import { getWalletStatus } from "../web3/web3";
+import Layout from "../components/common/Layout";
+import { getFirstAccount, getWalletStatus } from "../web3/lib/wallet";
 
 class AboutPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            walletStatus: "disabled"
+            walletStatus: "disabled",
+            account: "0x0"
         }
     }
     async componentDidMount() {
         const walletStatus = await getWalletStatus();
+        const account = await getFirstAccount();
         this.setState({
-            walletStatus
+            walletStatus,
+            account
         })
     }
     render() {
-        const { walletStatus } = this.state;
+        const { walletStatus, account } = this.state;
         return (
-            <Layout activeItem="About" walletStatus={ walletStatus }>
+            <Layout activeItem="About" walletStatus={ walletStatus } account={account}>
             <Container textAlign="left" style={{ padding: "5em 0em "}}>
                 <Header
                     style={{

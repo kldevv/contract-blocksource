@@ -1,30 +1,39 @@
 import React, { Component } from "react";
-import Layout from "../components/components/Layout";
-import ExploreMessageBarScene from "../components/scenes/explore-message-bar";
-import ExploreCampaignListScene from "../components/scenes/explore-campaign-list";
-import GetConnectScene from "../components/scenes/get-connect";
-import { getWalletStatus } from "../web3/web3";
+import Layout from "../components/common/Layout";
+import ExploreHeaderBarScene from "../components/explore-campaign/ExploreHeaderBarScene";
+import ExploreCampaignListScene from "../components/explore-campaign/ExploreCampaignListScene";
+// import GetConnectScene from "../components/scenes/get-connect";
+import { getWalletStatus, getFirstAccount } from "../web3/lib/wallet";
+import { getAllCampaignInfo } from "../web3/lib/info"
 
 class ExploreCampaignsPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            walletStatus: "disabled"
+            walletStatus: "not received",
+            allCampaignInfo: [],
+            account: "0x0"
         }
     }
+
     async componentDidMount() {
         const walletStatus = await getWalletStatus();
+        const account = await getFirstAccount();
+        const allCampaignInfo = await getAllCampaignInfo();
         this.setState({
-            walletStatus
+            walletStatus,
+            allCampaignInfo,
+            account
         })
     }
+
     render() {
-        const {walletStatus} = this.state;
+        const { walletStatus, allCampaignInfo, account } = this.state;
         return (
-        <Layout activeItem="Explore" walletStatus={walletStatus}>
-            <ExploreMessageBarScene content={"Explore Campaigns"} backgroundColor="white" />
+        <Layout activeItem="Explore" walletStatus={walletStatus} account={account}>
+            <ExploreHeaderBarScene content={"Explore Campaigns"} backgroundColor="white" />
             {/* <GetConnectScene walletStatus={walletStatus}/> */}
-            <ExploreCampaignListScene />
+            <ExploreCampaignListScene allCampaignInfo={ allCampaignInfo }/>
         </Layout>
         );
     }

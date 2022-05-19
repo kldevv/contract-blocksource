@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Header, Segment, Grid} from "semantic-ui-react";
 
-class ExploreMessageBarScene extends Component {
+class ExploreHeaderBarScene extends Component {
     render() {
         const { content, backgroundColor } = this.props;
         return (
@@ -29,4 +29,4 @@ class ExploreMessageBarScene extends Component {
     }
 }
 
-export default ExploreMessageBarScene;
+export default ExploreHeaderBarScene;

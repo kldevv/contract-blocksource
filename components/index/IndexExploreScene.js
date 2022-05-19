@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button, Container, Header, Segment, Icon} from "semantic-ui-react";
 
 
-class LandingExploreScene extends Component {
+class IndexExploreScene extends Component {
     render() {
         return (
             <Segment 
@@ -56,4 +56,4 @@ class LandingExploreScene extends Component {
     }
 }
 
-export default LandingExploreScene;
+export default IndexExploreScene;
