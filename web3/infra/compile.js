@@ -54,3 +54,5 @@ for (let contractFileName in output) {
         }
     );
 }
+
+console.log("Compilation succeed.");
